@@ -14,7 +14,7 @@ update-java-alternatives --set java-1.8.0-openjdk-amd64
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 apt-get install apt-transport-https
 echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
-apt-get update && apt-get -y install kibana elasticsearch
+apt-get update && export ES_SKIP_SET_KERNEL_PARAMETERS=true && apt-get -y install kibana elasticsearch
 systemctl daemon-reload
 systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
