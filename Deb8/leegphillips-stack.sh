@@ -15,6 +15,7 @@ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add
 apt-get install apt-transport-https
 echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
 apt-get update && export ES_SKIP_SET_KERNEL_PARAMETERS=true && apt-get -y install kibana elasticsearch
+wget -O /etc/elasticsearch/jvm.options https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/elasticsearch-jvm-options
 systemctl daemon-reload
 systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
@@ -24,3 +25,5 @@ systemctl start kibana.service
 #install Nginx
 systemctl stop apache2.service
 apt-get -y install nginx apache2-utils
+wget -O /etc/nginx/sites-available/default https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/nginx-default-available
+systemctl restart nginx.service
