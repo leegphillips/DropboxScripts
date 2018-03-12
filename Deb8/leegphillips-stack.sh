@@ -20,3 +20,7 @@ systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
 systemctl enable kibana.service
 systemctl start kibana.service
+
+#install Nginx
+systemctl stop apache2.service
+apt-get install nginx apache2-utils
