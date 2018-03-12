@@ -23,4 +23,4 @@ systemctl start kibana.service
 
 #install Nginx
 systemctl stop apache2.service
-apt-get install nginx apache2-utils
+apt-get -y install nginx apache2-utils
