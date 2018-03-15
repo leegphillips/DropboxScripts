@@ -22,6 +22,7 @@ apt-get update && export ES_SKIP_SET_KERNEL_PARAMETERS=true && apt-get -y instal
 wget -O /etc/elasticsearch/jvm.options https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/elasticsearch-jvm-options
 wget -O /etc/logstash/jvm.options https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/logstash-jvm-options
 wget -O /etc/logstash/logstash.yml https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/logstash.yml
+wget -O /etc/logstash/conf.d/01-http-input.conf https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/conf.d/01-http-input.conf
 wget -O /etc/logstash/conf.d/02-beats-input.conf https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/conf.d/02-beats-input.conf
 wget -O /etc/logstash/conf.d/12-nginx-log.conf https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/conf.d/12-nginx-log.conf
 wget -O /etc/logstash/conf.d/30-elasticsearch-output.conf https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/conf.d/30-elasticsearch-output.conf
