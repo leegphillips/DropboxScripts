@@ -204,7 +204,7 @@ path.data: /var/lib/logstash
 #   * debug
 #   * trace
 #
-log.level: trace
+#.level: trace
 path.logs: /var/log/logstash
 #
 # ------------ Other Settings --------------
