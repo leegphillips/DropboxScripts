@@ -46,5 +46,5 @@ systemctl enable filebeat.service
 systemctl start filebeat.service
 
 #add dummy data into ElasticSearch
-curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" "http://localhost:9200/manual/test/1" -d "{ \"field\" : \"value\"}"
-curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" "http://localhost:9200/manual/test/2" -d "{ \"field\" : \"value\"}"
+curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" "http://localhost:9200/direct-elasticsearch/test/1" -d "{ \"field\" : \"value\"}"
+curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" "http://localhost:9200/direct-elasticsearch/test/2" -d "{ \"field\" : \"value\"}"
