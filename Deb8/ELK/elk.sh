@@ -26,6 +26,10 @@ wget -O /etc/logstash/conf.d/02-beats-input.conf https://raw.githubusercontent.c
 wget -O /etc/logstash/conf.d/12-nginx-log.conf https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/conf.d/12-nginx-log.conf
 wget -O /etc/logstash/conf.d/30-elasticsearch-output.conf https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/conf.d/30-elasticsearch-output.conf
 
+wget -N http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz
+tar -xvzf GeoLite2-City.tar.gz
+mv GeoLite2-City_20180306/GeoLite2-City.mmdb /etc/logstash
+
 systemctl daemon-reload
 systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
