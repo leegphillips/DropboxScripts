@@ -26,10 +26,6 @@ wget -O /etc/logstash/conf.d/02-beats-input.conf https://raw.githubusercontent.c
 wget -O /etc/logstash/conf.d/12-nginx-log.conf https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/conf.d/12-nginx-log.conf
 wget -O /etc/logstash/conf.d/30-elasticsearch-output.conf https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/conf.d/30-elasticsearch-output.conf
 
-wget -N http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
-gunzip GeoLiteCity.dat.gz
-mv GeoLiteCity.dat  /etc/logstash/
-
 systemctl daemon-reload
 systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
