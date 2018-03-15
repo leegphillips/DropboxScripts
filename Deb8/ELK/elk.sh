@@ -21,6 +21,7 @@ echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee 
 apt-get update && export ES_SKIP_SET_KERNEL_PARAMETERS=true && apt-get -y install kibana elasticsearch logstash filebeat
 wget -O /etc/elasticsearch/jvm.options https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/elasticsearch-jvm-options
 wget -O /etc/logstash/jvm.options https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/logstash-jvm-options
+wget -O /etc/logstash/logstash.yml https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/logstash.yml
 systemctl daemon-reload
 systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
