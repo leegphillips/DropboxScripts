@@ -34,3 +34,12 @@ systemctl stop apache2.service
 apt-get -y install nginx apache2-utils
 wget -O /etc/nginx/sites-available/default https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/nginx-default-available
 systemctl restart nginx.service
+
+#install Nginx filebeat connector
+cd /usr/share/elasticsearch/
+bin/elasticsearch-plugin install -s --batch ingest-geoip
+bin/elasticsearch-plugin install -s --batch ingest-user-agent
+filebeat modules enable nginx
+filebeat setup
+systemctl enable filebeat.service
+systemctl start filebeat.service
