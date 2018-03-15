@@ -40,12 +40,6 @@ systemctl start kibana.service
 systemctl enable logstash.service
 systemctl start logstash.service
 
-#install Nginx
-systemctl stop apache2.service
-apt-get -y install nginx apache2-utils
-wget -O /etc/nginx/sites-available/default https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/nginx-default-available
-systemctl restart nginx.service
-
 #install Nginx filebeat connector
 cd /usr/share/elasticsearch/
 bin/elasticsearch-plugin install -s --batch ingest-geoip
@@ -54,6 +48,12 @@ filebeat modules enable nginx
 filebeat setup
 systemctl enable filebeat.service
 systemctl start filebeat.service
+
+#install Nginx
+systemctl stop apache2.service
+apt-get -y install nginx apache2-utils
+wget -O /etc/nginx/sites-available/default https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/ELK/nginx-default-available
+systemctl restart nginx.service
 
 #add dummy data directly into ElasticSearch
 curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" "http://localhost:9200/direct-elasticsearch/test/1" -d "{ \"field\" : \"value\"}"
