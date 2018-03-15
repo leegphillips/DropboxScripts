@@ -54,6 +54,10 @@ filebeat setup
 systemctl enable filebeat.service
 systemctl start filebeat.service
 
-#add dummy data into ElasticSearch
+#add dummy data directly into ElasticSearch
 curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" "http://localhost:9200/direct-elasticsearch/test/1" -d "{ \"field\" : \"value\"}"
 curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" "http://localhost:9200/direct-elasticsearch/test/2" -d "{ \"field\" : \"value\"}"
+
+#add dummy data into ElasticSearch via LogStash via HTTP connector
+curl -v -XPUT 'http://localhost:31311/twitter/tweet/1' -d 'hello'
+curl -v -XPUT 'http://localhost:31311/twitter/tweet/2' -d 'hello2'
