@@ -3,6 +3,10 @@
 #enable output
 set -x
 
+#set UK timezone
+mv /etc/localtime /etc/localtime.default
+cp /usr/share/zoneinfo/Europe/London /etc/localtime
+
 #install Java8
 echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
 apt-get update
