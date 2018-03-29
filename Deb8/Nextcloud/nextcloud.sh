@@ -18,6 +18,6 @@ apt-get install postgresql -y
 
 su - postgres
 wget -O create.sql https://raw.githubusercontent.com/leegphillips/Scripts/master/Deb8/Nextcloud/createNextcloudDB.sql
-psql -f create
+psql -f create.sql
 exit
 
