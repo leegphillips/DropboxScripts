@@ -20,3 +20,7 @@ psql -f create.sql
 exit
 
 apt-get install nextcloud-server
+
+a2enmod ssl
+a2ensite default-ssl
+service apache2 restart
