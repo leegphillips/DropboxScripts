@@ -19,3 +19,4 @@ wget -O create.sql https://raw.githubusercontent.com/leegphillips/Scripts/master
 psql -f create.sql
 exit
 
+apt-get install nextcloud-server
