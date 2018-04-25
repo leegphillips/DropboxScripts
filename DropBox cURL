@@ -1,0 +1,25 @@
+apt install curl jq -y
+
+note - content_hash is SHA-256
+
+Basic query
+curl -v -X POST "https://api.dropboxapi.com/2/users/get_current_account" -H "Authorization: Bearer XYZ" | jq
+
+List files
+curl -v -X POST "https://api.dropboxapi.com/2/files/list_folder" -H "Authorization: Bearer XYZ" --data "{\"path\": \"\",\"recursive\": false,\"include_media_info\": false,\"include_deleted\": false,\"include_has_explicit_shared_members\": false,\"include_mounted_folders\": true}" -H "Content-Type: application/json" | jq
+
+Download file - can be used with path or id - ('-O -J' to preserve filename does not seem to be working)
+curl -v -O -J -X POST https://content.dropboxapi.com/2/files/download -H "Authorization: Bearer XYZ" -H "Dropbox-API-Arg: {\"path\": \"id:2ZZVUmOkd64AAAAAAAAMCw\"}"
+
+Upload file (max 150MB - otherwise use chunked)
+curl -v -X POST https://content.dropboxapi.com/2/files/upload \
+    --header "Authorization: Bearer XYZ" \
+    --header "Dropbox-API-Arg: {\"path\": \"/smile.jpg.gpg\",\"mode\": \"add\",\"autorename\": true,\"mute\": false}" \
+    --header "Content-Type: application/octet-stream" \
+    --data-binary @smile.jpg.gpg
+    
+Encrypt
+gpg --output encrypted.data --symmetric --cipher-algo AES256 un_encrypted.data
+
+To Decrypt:
+gpg --output un_encrypted.data --decrypt encrypted.data
